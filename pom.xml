@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>Customer</name>
-	<description>Customer project for Spring Boot</description>
+	<description>Customer project for Spring Boot Cloud</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
