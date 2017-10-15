@@ -1,5 +1,12 @@
 package com.ba.domain.customer;
 
+import java.util.List;
+
+import com.ba.domain.account.Account;
+import com.ba.domain.booking.Booking;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Customer {
 	
 	private String id;
@@ -7,6 +14,10 @@ public class Customer {
 	private String firstName;
 	
 	private String lastName;
+	
+	private Account account;
+	
+	private List<Booking> bookings;
 
 	public Customer() {
 		
@@ -43,11 +54,26 @@ public class Customer {
 		this.lastName = lastName;
 	}
 
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+
+	public List<Booking> getBookings() {
+		return bookings;
+	}
+
+	public void setBookings(List<Booking> bookings) {
+		this.bookings = bookings;
+	}
+
 	@Override
 	public String toString() {
-		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + "]";
+		return "Customer [id=" + id + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", account=" + account
+				+ ", bookings=" + bookings + "]";
 	}
-	
-	
-
 }
