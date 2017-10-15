@@ -96,7 +96,7 @@ public class CustomerController {
 		try {
 			System.out.println("Env Variable is " + System.getenv(ACCOUNT_ENDPOINT_KEY));
 			account = restTemplate.getForObject(
-					"http://" + System.getenv(ACCOUNT_ENDPOINT_KEY) + "/accounts", Account.class);
+					"http://" + System.getenv(ACCOUNT_ENDPOINT_KEY) + "/accounts/"+customerId, Account.class);
 			
 			System.out.println("Namespace based Lookup response" + account.toString());
 		} catch(Exception aexp) {
