@@ -6,6 +6,9 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,6 +27,8 @@ public class CustomerController {
 
 	private static final String ACCOUNT_ENDPOINT_KEY = "ACCOUNT_SERVICE_EP";
 	
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
+	
 	private RestTemplate restTemplate;
 	
 	private static List<Customer> allCustomers = new ArrayList<Customer>();
@@ -41,6 +46,8 @@ public class CustomerController {
 	@RequestMapping( method = RequestMethod.GET)
 	@ResponseBody
 	public List<Customer> retrieveAllCustomers(@RequestParam Map<String,String> params) {
+		
+		logger.info("Hello retrieveAllCustomers");	
 		
 		List<Customer> customers = null;
 		
@@ -62,6 +69,9 @@ public class CustomerController {
 	@RequestMapping( method = RequestMethod.GET, value = "/{customerId}")
 	@ResponseBody
 	public Customer retrieveCustomer(@PathVariable long customerId) {
+		
+		logger.info("Hello retrieveCustomer");		
+		
 		Optional<Customer> customer = allCustomers.stream().filter(p -> p.getId().equalsIgnoreCase(String.valueOf(customerId))).findFirst();
 		
 		Customer cust = customer.orElse(new Customer(String.valueOf(customerId),null,null));
@@ -75,6 +85,7 @@ public class CustomerController {
 	
 	@SuppressWarnings("unchecked")
 	private List<Booking> getBookings() {
+		logger.info("Hello getBookings");
 		
 		List<Booking> bookings = new ArrayList<Booking>();
 		try {
@@ -92,6 +103,8 @@ public class CustomerController {
 	private Account getAccount(String customerId) {
 		
 		Account account = null;
+		
+		logger.info("Hello getAccount");
 		
 		try {
 			System.out.println("Env Variable is " + System.getenv(ACCOUNT_ENDPOINT_KEY));
