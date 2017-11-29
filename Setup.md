@@ -2,7 +2,7 @@
 
 Step 1: Install OC client tool from below URL
 
-https://developers.openshift.com/managing-your-applications/client-tools.html
+https://docs.openshift.com/container-platform/3.4/cli_reference/get_started_cli.html
 
 Step 2: Login to openshift using token or username/password
 
